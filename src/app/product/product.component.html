@@ -1,0 +1,28 @@
+<ion-item *ngIf="product" (click)="navigateProduct(product.id)" [detail]="false">
+  <div slot="start"></div>
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ product.name }}
+      <span class="date">
+        <ion-note>{{ product.price | currency }}</ion-note>
+        <ion-note color="primary"> New Price: {{ product.offertPrice | currency }}</ion-note>
+      </span>
+    </h2>
+    <h3>{{ product.categoria }}</h3>
+
+    <div class="container-small-image">
+      <ion-img
+        [src]="product.image"
+        [alt]="product.name"
+      ></ion-img>
+
+    </div>
+
+    <div *ngIf="isCar" class="center">
+      <ion-button color="danger" (click)="removeFromCard(product.id)">
+        Remover del Carrito
+      </ion-button>
+    </div>
+
+  </ion-label>
+</ion-item>

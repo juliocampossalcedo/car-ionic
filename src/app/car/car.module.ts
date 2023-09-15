@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
-import { HomePage } from './home.page';
-import { HomePageRoutingModule } from './home-routing.module';
+import { CarPage } from './car.page';
+import { CarPageRoutingModule } from './car-routing.module';
 import { ProductComponentModule } from '../product/product.module';
 
 @NgModule({
@@ -13,8 +13,8 @@ import { ProductComponentModule } from '../product/product.module';
     FormsModule,
     IonicModule,
     ProductComponentModule,
-    HomePageRoutingModule
+    CarPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [CarPage]
 })
-export class HomePageModule {}
+export class CarPageModule {}

@@ -1,83 +1,75 @@
 import { Injectable } from '@angular/core';
 
-export interface Message {
-  fromName: string;
-  subject: string;
-  date: string;
+export interface Product {
+  name: string;
+  categoria: string;
+  price: number;
+  offertPrice: number;
+  image: string;
   id: number;
-  read: boolean;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  public messages: Message[] = [
+  public products: Product[] = [
     {
-      fromName: 'Matt Chorsey',
-      subject: 'New event: Trip to Vegas',
-      date: '9:32 AM',
+      name: "Coche Cuna Compacto Rocking Blac",
+      categoria: "Infantil",
+      price: 499.9,
       id: 0,
-      read: false
+      offertPrice: 449.9,
+      image: "./../../assets/products/product1.webp"
     },
     {
-      fromName: 'Lauren Ruthford',
-      subject: 'Long time no chat',
-      date: '6:12 AM',
+      name: "Silla De Comer AltaINFANTI 360° Gris",
+      categoria: "Infantil",
+      price: 470.9,
       id: 1,
-      read: false
+      offertPrice: 379.9,
+      image: "./../../assets/products/product2.webp"
     },
     {
-      fromName: 'Jordan Firth',
-      subject: 'Report Results',
-      date: '4:55 AM',
+      name: "Vino Tinto SÉPTIMA Malbec Botella 750ml",
+      categoria: "Bebidas",
+      price: 54.9,
       id: 2,
-      read: false
+      offertPrice: 45.9,
+      image: "./../../assets/products/product3.webp"
     },
     {
-      fromName: 'Bill Thomas',
-      subject: 'The situation',
-      date: 'Yesterday',
+      name: "Helado BELL'S Trisabor Pote 1.27Kg",
+      categoria: "Postres",
+      price: 16.9,
       id: 3,
-      read: false
-    },
-    {
-      fromName: 'Joanne Pollan',
-      subject: 'Updated invitation: Swim lessons',
-      date: 'Yesterday',
-      id: 4,
-      read: false
-    },
-    {
-      fromName: 'Andrea Cornerston',
-      subject: 'Last minute ask',
-      date: 'Yesterday',
-      id: 5,
-      read: false
-    },
-    {
-      fromName: 'Moe Chamont',
-      subject: 'Family Calendar - Version 1',
-      date: 'Last Week',
-      id: 6,
-      read: false
-    },
-    {
-      fromName: 'Kelly Richardson',
-      subject: 'Placeholder Headhots',
-      date: 'Last Week',
-      id: 7,
-      read: false
+      offertPrice: 14.9,
+      image: "./../../assets/products/product4.webp"
     }
   ];
 
+  public car: Product[] = [];
+
   constructor() { }
 
-  public getMessages(): Message[] {
-    return this.messages;
+  public getProducts(): Product[] {
+    return this.products;
   }
 
-  public getMessageById(id: number): Message {
-    return this.messages[id];
+  public getProductById(id: number): Product {
+    return this.products[id];
   }
+
+  public addProductToCar(id: number): void {
+    this.car.push(this.getProductById(id));
+  }
+
+  public getCar(): Product[] {
+    return this.car;
+  }
+
+  public removeFromCar(id: number): void {
+    this.car.splice(this.car.findIndex(item => item.id === id), 1);
+  }
+
 }

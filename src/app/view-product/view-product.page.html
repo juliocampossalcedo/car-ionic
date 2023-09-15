@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="product">
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      <h2>
+        {{ product.name }}
+        <span class="date">
+          <ion-note>{{ product.price }}</ion-note>
+          <ion-note color="primary"> New Price: {{ product.offertPrice }}</ion-note>
+        </span>
+      </h2>
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-padding">
+    <h1>{{ product.categoria }}</h1>
+    <div class="container-image">
+      <ion-img
+        [src]="product.image"
+        [alt]="product.name"
+      ></ion-img>
+    </div>
+  </div>
+
+  <div class="container-button">
+    <ion-button size="large" (click)="addToCard()">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Add to card
+    </ion-button>
+  </div>
+
+</ion-content>

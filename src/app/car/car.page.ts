@@ -5,11 +5,11 @@ import { ProductComponent } from '../product/product.component';
 import { DataService, Product } from '../services/data.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-car',
+  templateUrl: 'car.page.html',
+  styleUrls: ['car.page.scss'],
 })
-export class HomePage {
+export class CarPage {
   private data = inject(DataService);
   constructor() {}
 
@@ -19,11 +19,16 @@ export class HomePage {
     }, 3000);
   }
 
-  getProducts(): Product[] {
-    return this.data.getProducts();
-  }
-
   getCar(): Product[] {
     return this.data.getCar();
   }
+
+  getPayment() : number {
+    return this.getCar().reduce((total, item) => total + item.offertPrice, 0);
+  }
+
+  removeFromCar(id: number) : void {
+    this.data.removeFromCar(id);
+  }
+
 }

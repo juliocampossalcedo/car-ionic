@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-title>
+        Carrito de compras
+      </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <app-product
+      *ngFor="let product of getCar()"
+      [isCar]="true"
+      (removeItem)="removeFromCar($event)"
+      [product]="product"></app-product>
+  </ion-list>
+
+  <div class="container-pay">
+    <ion-button fill="solid" >
+      Pagar {{getPayment()}}
+    </ion-button>
+  </div>
+
+</ion-content>
